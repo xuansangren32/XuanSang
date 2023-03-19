@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WedsiteBanHang.Context;
 
 namespace WedsiteBanHang.Controllers
 {
     public class CategoryController : Controller
     {
+        WedBanHangEntities objWedBanHangEntities = new WedBanHangEntities();
         // GET: Category
-        public ActionResult Category()
+        public ActionResult Index()
         {
-            return View();
+            var lstCategory=objWedBanHangEntities.Categories.ToList();
+            return View(lstCategory);
         }
     }
 }

@@ -77,3 +77,7 @@ D:\WedsiteBanHang\WedsiteBanHang\obj\Debug\WedsiteBanHang.csproj.CoreCompileInpu
 D:\WedsiteBanHang\WedsiteBanHang\obj\Debug\WedsiteBanHang.csproj.CopyComplete
 D:\WedsiteBanHang\WedsiteBanHang\obj\Debug\WedsiteBanHang.dll
 D:\WedsiteBanHang\WedsiteBanHang\obj\Debug\WedsiteBanHang.pdb
+D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.dll
+D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.SqlServer.dll
+D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.xml
+D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.SqlServer.xml
