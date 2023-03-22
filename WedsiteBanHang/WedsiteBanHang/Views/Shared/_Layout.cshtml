@@ -35,7 +35,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-2 col-lg-3 col-md-12">
-                        <a href="https://localhost:44309/" class="brand-wrap">
+                        <a href="~/Home" class="brand-wrap">
                             <img class="logo" src="~/Content/images/logo.png">
                         </a> <!-- brand-wrap.// -->
                     </div>
@@ -61,16 +61,27 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header mr-3">
-                                <a href="https://localhost:44309/UserLogin/UserLogin" class="widget-view">
+                                <a href="~/UserLogin/UserLogin" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-user"></i>
                                         <span class="notify">3</span>
                                     </div>
-                                    <small class="text"> My profile </small>
+                                    @if (Session["idUser"] != null)
+                                    {
+
+
+                                        <a>Trang Admin</a>
+                                        <a href="~/Home/Logout">Logout</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Home/Login">Login</a>
+                                    }
+                                    @*@ <small class="text"> My profile </small>*@
                                 </a>
                             </div>
                             <div class="widget-header mr-3">
-                                <a href="https://localhost:44309/UserRegister/UserRegister" class="widget-view">
+                                <a href="~/UserRegister/UserRegister" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-comment-dots"></i>
                                         <span class="notify">1</span>
@@ -87,7 +98,7 @@
                                 </a>
                             </div>
                             <div class="widget-header">
-                                <a href="https://localhost:44309/ShoppingCart/ShoppingCart" class="widget-view">
+                                <a href="~/ShoppingCart/ShoppingCart" class="widget-view">
                                     <div class="icon-area">
                                         <i class="fa fa-shopping-cart"></i>
                                     </div>
