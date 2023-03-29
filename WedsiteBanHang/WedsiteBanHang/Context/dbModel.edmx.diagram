@@ -7,7 +7,7 @@
       <Diagram DiagramId="c1f650c469d74ab6a174d093ac4ec954" Name="Diagram1">
         <EntityTypeShape EntityType="WedBanHangModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WedBanHangModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WedBanHangModel.Order" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WedBanHangModel.Order" Width="1.5" PointX="4.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WedBanHangModel.Product" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WedBanHangModel.User" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
       </Diagram>

@@ -7,7 +7,6 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WedsiteBanHang.Context;
- 
 using WedsiteBanHang.Models;
 
 namespace WedsiteBanHang.Controllers
@@ -74,8 +73,8 @@ namespace WedsiteBanHang.Controllers
         {
             return View();
         }
-
-        [HttpGet]
+        //doi get thanh post
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
