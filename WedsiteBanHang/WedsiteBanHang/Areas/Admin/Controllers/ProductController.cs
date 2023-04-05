@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,45 +17,39 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
     {
         // GET: Admin/Product
         WedBanHangEntities objWedBanHangEntities = new WedBanHangEntities();
-        public ActionResult Index(string SearchString)
+        public ActionResult Index(string SearchString,string currentFiler,int? page)
         {
-            var lstProduct = objWedBanHangEntities.Products.Where(n=>n.Name.Contains(SearchString)).ToList();
-            return View(lstProduct);
+           var lstProduct=new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFiler;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                 lstProduct = objWedBanHangEntities.Products.Where(n => n.Name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                 lstProduct = objWedBanHangEntities.Products.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 4;
+            int pageNumber=(page ?? 1);
+
+            lstProduct = lstProduct.OrderByDescending(n => n.Id).ToList();
+
+
+
+            return View(lstProduct.ToPagedList(pageNumber,pageSize));
         }
         [HttpGet]
         public ActionResult Create()
         {
-            Commom objcommom = new Commom();
-            // lấy dữ liệu danh mục dưới Db
-            var lstCat = objWedBanHangEntities.Categories.ToList();
-            //Convert sang select list dang value,text
-            ListtoDataTableConverter converter = new ListtoDataTableConverter();
-            DataTable dtCategory = converter.ToDataTable(lstCat);
-            ViewBag.ListCategory = objcommom.ToSelectList(dtCategory, "Id", "Name");
-
-            //lấy dữ liêuj thương hiệu dưới Db
-            var lstBrand = objWedBanHangEntities.Brands.ToList();
-            DataTable dtBrand = converter.ToDataTable(lstBrand);
-            //convert sang select list dang value,text
-            ViewBag.ListBrand = objcommom.ToSelectList(dtBrand, "Id", "Name");
-
-            //loai san pham
-            List<ProductType> lstProductType = new List<ProductType>();
-            ProductType objProductType = new ProductType();
-            objProductType.Id = 01;
-            objProductType.Name = "Giảm giá sốc";
-            lstProductType.Add(objProductType);
-
-
-
-            objProductType = new ProductType();
-            objProductType.Id = 02;
-            objProductType.Name = "Đề xuất";
-            lstProductType.Add(objProductType);
-
-            DataTable dtProductType = converter.ToDataTable(lstProductType);
-            //convert sang select list dang value,text
-            ViewBag.ProductType = objcommom.ToSelectList(dtProductType, "Id", "Name");
+            this.LoadData();
             return View();
         }
 
@@ -62,7 +57,7 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Product objProduct)
         {
-
+            this.LoadData();
             if (ModelState.IsValid)
             {
                 try
@@ -134,7 +129,40 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
         }
 
 
+        void LoadData()
+        {
+            Commom objcommom = new Commom();
+            // lấy dữ liệu danh mục dưới Db
+            var lstCat = objWedBanHangEntities.Categories.ToList();
+            //Convert sang select list dang value,text
+            ListtoDataTableConverter converter = new ListtoDataTableConverter();
+            DataTable dtCategory = converter.ToDataTable(lstCat);
+            ViewBag.ListCategory = objcommom.ToSelectList(dtCategory, "Id", "Name");
 
+            //lấy dữ liêuj thương hiệu dưới Db
+            var lstBrand = objWedBanHangEntities.Brands.ToList();
+            DataTable dtBrand = converter.ToDataTable(lstBrand);
+            //convert sang select list dang value,text
+            ViewBag.ListBrand = objcommom.ToSelectList(dtBrand, "Id", "Name");
+
+            //loai san pham
+            List<ProductType> lstProductType = new List<ProductType>();
+            ProductType objProductType = new ProductType();
+            objProductType.Id = 01;
+            objProductType.Name = "Giảm giá sốc";
+            lstProductType.Add(objProductType);
+
+
+
+            objProductType = new ProductType();
+            objProductType.Id = 02;
+            objProductType.Name = "Đề xuất";
+            lstProductType.Add(objProductType);
+
+            DataTable dtProductType = converter.ToDataTable(lstProductType);
+            //convert sang select list dang value,text
+            ViewBag.ProductType = objcommom.ToSelectList(dtProductType, "Id", "Name");
+        }
 
     }
 }
