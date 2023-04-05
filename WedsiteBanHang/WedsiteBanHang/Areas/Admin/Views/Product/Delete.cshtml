@@ -94,14 +94,15 @@
 
         </dl>
 
-        @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new {enctype="multipart/form-data"}))
+        @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-default" /> |
                 @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
+            </div>}
+        
     </div>
+        
 </div>

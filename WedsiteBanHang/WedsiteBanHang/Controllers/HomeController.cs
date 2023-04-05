@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WedsiteBanHang.Context;
 using WedsiteBanHang.Models;
+using User = WedsiteBanHang.Context.User;
 
 namespace WedsiteBanHang.Controllers
 {

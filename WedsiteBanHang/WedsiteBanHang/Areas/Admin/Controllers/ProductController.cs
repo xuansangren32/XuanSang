@@ -16,36 +16,53 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
     {
         // GET: Admin/Product
         WedBanHangEntities objWedBanHangEntities = new WedBanHangEntities();
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            var lstProduct = objWedBanHangEntities.Products.ToList();
+            var lstProduct = objWedBanHangEntities.Products.Where(n=>n.Name.Contains(SearchString)).ToList();
             return View(lstProduct);
         }
         [HttpGet]
         public ActionResult Create()
         {
-            Commom objcommom=new Commom();
+            Commom objcommom = new Commom();
             // lấy dữ liệu danh mục dưới Db
-            var lstCat=objWedBanHangEntities.Categories.ToList();
+            var lstCat = objWedBanHangEntities.Categories.ToList();
             //Convert sang select list dang value,text
             ListtoDataTableConverter converter = new ListtoDataTableConverter();
             DataTable dtCategory = converter.ToDataTable(lstCat);
             ViewBag.ListCategory = objcommom.ToSelectList(dtCategory, "Id", "Name");
-            
+
             //lấy dữ liêuj thương hiệu dưới Db
-            var lstBrand=objWedBanHangEntities.Brands.ToList();
-            DataTable dtBrand=converter.ToDataTable(lstBrand);
+            var lstBrand = objWedBanHangEntities.Brands.ToList();
+            DataTable dtBrand = converter.ToDataTable(lstBrand);
             //convert sang select list dang value,text
-            ViewBag.ListBrand= objcommom.ToSelectList(dtBrand, "Id", "Name");
+            ViewBag.ListBrand = objcommom.ToSelectList(dtBrand, "Id", "Name");
+
+            //loai san pham
+            List<ProductType> lstProductType = new List<ProductType>();
+            ProductType objProductType = new ProductType();
+            objProductType.Id = 01;
+            objProductType.Name = "Giảm giá sốc";
+            lstProductType.Add(objProductType);
+
+
+
+            objProductType = new ProductType();
+            objProductType.Id = 02;
+            objProductType.Name = "Đề xuất";
+            lstProductType.Add(objProductType);
+
+            DataTable dtProductType = converter.ToDataTable(lstProductType);
+            //convert sang select list dang value,text
+            ViewBag.ProductType = objcommom.ToSelectList(dtProductType, "Id", "Name");
             return View();
         }
 
-
-        [ValidateInput(false)]      
-        
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult Create(Product objProduct)
         {
+
             if (ModelState.IsValid)
             {
                 try
@@ -91,17 +108,18 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
             objWedBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
-
+       
         [HttpGet]
         public ActionResult Edit(int id)
         {
             var objProduct = objWedBanHangEntities.Products.Where(n => n.Id == id).FirstOrDefault();
             return View(objProduct);
         }
-
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Edit(int id,Product objPro)
+        public ActionResult Edit(int id, Product objPro)
         {
+
             if (objPro.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objPro.ImageUpload.FileName);
@@ -110,11 +128,16 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
                 objPro.Avatar = fileName;
                 objPro.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
             }
-            objWedBanHangEntities.Entry(objPro).State=EntityState.Modified;
+            objWedBanHangEntities.Entry(objPro).State = EntityState.Modified;
             objWedBanHangEntities.SaveChanges();
             return View(objPro);
         }
 
+
+
+
     }
-   
 }
+    
+
+   

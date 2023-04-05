@@ -81,3 +81,4 @@ D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.dll
 D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.SqlServer.dll
 D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.xml
 D:\WedsiteBanHang\WedsiteBanHang\bin\EntityFramework.SqlServer.xml
+D:\WedsiteBanHang\WedsiteBanHang\bin\Baseline.dll

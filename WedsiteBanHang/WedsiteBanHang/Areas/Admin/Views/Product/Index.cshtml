@@ -1,15 +1,23 @@
-﻿@model IEnumerable<WedsiteBanHang.Context.Product>
+﻿{@model IEnumerable<WedsiteBanHang.Context.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lí sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="content-wrapper">
-    <h2>Index</h2>
+    <h2>Quản lí sản phẩm</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Tạo mới", "Create")
     </p>
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+            {
+        <p>
+    Tìm tên sản phẩm:@Html.TextBox("SearchString",ViewBag.CurrentFilter as String)
+            <input type="submit" value="Tìm kiếm" />
+        </p>
+             
+            }
     <table class="table">
         <tr>
             <th>

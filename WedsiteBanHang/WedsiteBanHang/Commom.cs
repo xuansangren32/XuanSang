@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace WedsiteBanHang
 {
     public class Commom
@@ -40,11 +41,9 @@ namespace WedsiteBanHang
                     {
 
                     var values = new object[Props.Length];
-
-                 
-                    for (int i = 0; i < Props.Length; i++);
+                    for (int i = 0; i < Props.Length; i++)
                     {
-                        values[i] = Props[i].GetValue(items, null);
+                        values[i] = Props[i].GetValue(item, null);
                     }
                     dataTable.Rows.Add(values);
                 }
@@ -54,5 +53,10 @@ namespace WedsiteBanHang
 
         }
          
+    }
+    public class ProductType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
