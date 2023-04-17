@@ -39,38 +39,42 @@
                             <img class="logo" src="~/Content/images/logo.png">
                         </a> <!-- brand-wrap.// -->
                     </div>
-                    <div class="col-xl-6 col-lg-5 col-md-6">
-                        <form action="#" class="search-header">
-                            <div class="input-group w-100">
-                                <select class="custom-select border-right" name="category_name">
-                                    <option value="">Tất cả các loại</option>
-                                    <option value="codex">Đặc biệt</option>
-                                    <option value="comments">Chỉ tốt nhất</option>
-                                    <option value="content">Muộn nhất</option>
-                                </select>
-                                <input type="text" class="form-control" placeholder="Search">
+                        <div class="col-xl-6 col-lg-5 col-md-6">
+                            <form action="@Url.Action("Seach","Home")" class="search-header" name="timkiem">
+                                <div class="input-group w-100">
+                                    @*<input type="text" name="search" class="form-control" />
+                        <input type="submit" name="submit" value="tìm kiếm" class="form-control"/>*@
 
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fa fa-search"></i> Tìm kiếm
-                                    </button>
+                                    <select class="custom-select border-right" name="category_name">
+                                        <option value="">@Html.ActionLink("Điện thoại", "ProductCategory/1", "Category")</option>
+                                        <option value="codex">Đặc biệt</option>
+                                        <option value="comments">Chỉ tốt nhất</option>
+                                        <option value="content">Muộn nhất</option>
+                                    </select>
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="key">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-search"></i> Tìm kiếm
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form> <!-- search-wrap .end// -->
-                    </div> <!-- col.// -->
+                            </form> <!-- search-wrap .end// -->
+                        </div> <!-- col.// -->
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header mr-3">
                                 <a href="~/UserLogin/UserLogin" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-user"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="black" class="bi bi-chat-right-fill" viewBox="0 0 16 16">
+                                            <path d="M14 0a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
+                                        </svg>
                                         <span class="notify">3</span>
                                     </div>
                                     @if (Session["idUser"] != null)
                                     {
 
 
-                                        <a>Trang Admin</a>
+                                        <a href="~/Admin/sang/Index">Trang Admin</a>
                                         <a href="~/Home/Logout">Đăng xuất</a>
                                     }
                                     else
@@ -81,9 +85,11 @@
                                 </a>
                             </div>
                             <div class="widget-header mr-3">
-                                <a href="~/UserRegister/UserRegister" class="widget-view">
+                                <a href="~/Home/Register" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-comment-dots"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="black" class="bi bi-hand-index-fill" viewBox="0 0 16 16">
+                                            <path d="M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002z" />
+                                        </svg>
                                         <span class="notify">1</span>
                                     </div>
                                     <small class="text"> Đăng ký </small>
@@ -92,15 +98,22 @@
                             <div class="widget-header mr-3">
                                 <a href="#" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-store"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="black" class="bi bi-calendar2-minus" viewBox="0 0 16 16">
+                                            <path d="M5.5 10.5A.5.5 0 0 1 6 10h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                                            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                                        </svg>
                                     </div>
                                     <small class="text"> Đơn đặt hàng </small>
                                 </a>
                             </div>
                             <div class="widget-header">
-                                <a href="~/ShoppingCart/ShoppingCart" class="widget-view">
+                                <a href="~/Cart/Index/" class="widget-view">
                                     <div class="icon-area">
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z" />
+                                            <span class="notify" id="CartCount">@Session["count"]</span>
+                                        </svg>
                                     </div>
                                     <small class="text"> Giở hàng</small>
                                 </a>
@@ -124,7 +137,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-bars text-muted mr-2"></i> Categories </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">@Html.ActionLink("Machinery", "Category", "Category")</a>
+                                <a class="dropdown-item" href="#">Điện thoại</a>
                                 <a class="dropdown-item" href="#">@Html.ActionLink("Electronics", "Category", "Category")</a>
                                 <a class="dropdown-item" href="#">@Html.ActionLink("Home textile", "Category", "Category")</a>
                                 <a class="dropdown-item" href="#">@Html.ActionLink("Home and kitchen", "Category", "Category")</a>
@@ -134,17 +147,11 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sẵn sàng chuyển hàng</a>
+                            <a class="nav-link" href="~/Girl/Index/">Daanh mục tất cả sản phẩm</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Triển lãm thương mại</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Dịch vụ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Bán với chúng Tôi</a>
-                        </li>
+                       
+                        
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Trang demo</a>
                             <div class="dropdown-menu">
@@ -190,48 +197,48 @@
                     <aside class="col-md col-6">
                         <h6 class="title">Nhãn hiệu</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">@Html.ActionLink("Adidas", "Category", "Category")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Puma", "Category", "Category")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Reebok", "Category", "Category")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Nike", "Category", "Category")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Điện thoại", "ProductCategory/1", "Category")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Laptop", "ProductCategory/2", "Category")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Máy tính", "ProductCategory/3", "Category")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Đồng hồ", "ProductCategory/4", "Category")</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
                         <h6 class="title">Công ty</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">@Html.ActionLink("About us", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Career", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Find a store", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Rules and terms", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Sitemap", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Liên hệ chúng tôi", "Home", "Contact")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Sự nghiệp", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Tìm một sản phẩm", "Seach", "Home")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Quy tắc và điều khoản", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Sơ đồ trang web", "BlankStarter", "BlankStarter")</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
                         <h6 class="title">Giúp đỡ</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">@Html.ActionLink("Contact us", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Money refund", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Order status", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Shipping info", "BlankStarter", "BlankStarter")</a></li>
-                            <li> <a href="#">@Html.ActionLink("Open dispute", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Liên hệ chúng tôi", "Contact", "Home")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Hoàn tiền", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Tình trạng đặt hàng", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Thông tin vận chuyển", "BlankStarter", "BlankStarter")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Mở tranh chấp", "BlankStarter", "BlankStarter")</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md col-6">
                         <h6 class="title">Tài khoản</h6>
                         <ul class="list-unstyled">
-                            <li> <a href="#">@Html.ActionLink("User Login", "UserLogin", "UserLogin") </a></li>
-                            <li> <a href="#"> @Html.ActionLink("User register ", "UserRegister", "UserRegister")</a></li>
-                            <li> <a href="#">  @Html.ActionLink("Account Setting", "UserRegister", "UserRegister") </a></li>
-                            <li> <a href="#">  @Html.ActionLink("My Orders  ", "ShoppingCart", "ShoppingCart")</a></li>
+                            <li> <a href="#">@Html.ActionLink("Đăng nhập", "UserLogin", "UserLogin") </a></li>
+                            <li> <a href="#"> @Html.ActionLink("Đăng ký ", "UserRegister", "UserRegister")</a></li>
+                            <li> <a href="#">  @Html.ActionLink("Cài đặt tài khoản", "UserRegister", "UserRegister") </a></li>
+                            <li> <a href="#">  @Html.ActionLink("Đơn đặt hàng của tôi  ", "Index", "Cart")</a></li>
                         </ul>
                     </aside>
                     <aside class="col-md">
                         <h6 class="title">Xã hội</h6>
                         <ul class="list-unstyled">
-                            <li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
-                            <li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
-                            <li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
-                            <li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
+                            <li><a href="https://www.facebook.com/"> <i class="fab fa-facebook"></i> Facebook </a></li>
+                            <li><a href="https://twitter.com/" > <i class="fab fa-twitter"></i> Twitter </a></li>
+                            <li><a href="https://www.instagram.com/"> <i class="fab fa-instagram"></i> Instagram </a></li>
+                            <li><a href="https://www.youtube.com/"> <i class="fab fa-youtube"></i> Youtube </a></li>
                         </ul>
                     </aside>
                 </div> <!-- row.// -->

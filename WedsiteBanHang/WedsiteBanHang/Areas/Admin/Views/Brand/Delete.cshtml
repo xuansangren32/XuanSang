@@ -1,0 +1,91 @@
+﻿@model WedsiteBanHang.Context.Brand
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="content-wrapper">
+    <h2>Xóa </h2>
+
+    <h3>Bạn có muốn xóa không ?</h3>
+    <div>
+        <h4>Thương hiệu</h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+            
+            <dt>
+                <label>Tên sản phẩm</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                <label>Hình ảnh</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Avatar)
+            </dd>
+
+            <dt>
+                <label>Loại sản phẩm</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Slug)
+            </dd>
+
+            <dt>
+                <label>Hiện Trên Trang Chủ</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShowOnHomePage)
+            </dd>
+
+            <dt>
+                <label>Thứ tự hiển thị</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DisplayOrder)
+            </dd>
+
+            <dt>
+                <label>Ngày tạo</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOnUtc)
+            </dd>
+
+            <dt>
+                <label>Ngày cập nhật</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedOnUtc)
+            </dd>
+
+            <dt>
+                <label>Xóa</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Deleted)
+            </dd>
+
+        </dl>
+    
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+        }
+    </div>

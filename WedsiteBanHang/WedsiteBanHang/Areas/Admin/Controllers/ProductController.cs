@@ -16,7 +16,7 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         // GET: Admin/Product
-        WedBanHangEntities objWedBanHangEntities = new WedBanHangEntities();
+        WedBanHangEntities1 objWedBanHangEntities = new WedBanHangEntities1();
         public ActionResult Index(string SearchString,string currentFiler,int? page)
         {
            var lstProduct=new List<Product>();
@@ -46,6 +46,7 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
 
             return View(lstProduct.ToPagedList(pageNumber,pageSize));
         }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -62,21 +63,22 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
             {
                 try
                 {
+                   
                     if (objProduct.ImageUpload != null)
                     {
                         string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
                         string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                        fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                        fileName = fileName + extension;
                         objProduct.Avatar = fileName;
-                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items/"), fileName));
                     }
                     objWedBanHangEntities.Products.Add(objProduct);
                     objWedBanHangEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch
+                catch(Exception)
                 {
-                    return View();
+                    return RedirectToAction("Index");
                 }
 
             }
@@ -121,7 +123,7 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
                 string extension = Path.GetExtension(objPro.ImageUpload.FileName);
                 fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
                 objPro.Avatar = fileName;
-                objPro.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                objPro.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items/"), fileName));
             }
             objWedBanHangEntities.Entry(objPro).State = EntityState.Modified;
             objWedBanHangEntities.SaveChanges();
@@ -148,20 +150,20 @@ namespace WedsiteBanHang.Areas.Admin.Controllers
             //loai san pham
             List<ProductType> lstProductType = new List<ProductType>();
             ProductType objProductType = new ProductType();
-            objProductType.Id = 01;
+            //objProductType.Id = 01;
             objProductType.Name = "Giảm giá sốc";
             lstProductType.Add(objProductType);
 
 
 
             objProductType = new ProductType();
-            objProductType.Id = 02;
+            //objProductType.Id = 02;
             objProductType.Name = "Đề xuất";
             lstProductType.Add(objProductType);
 
             DataTable dtProductType = converter.ToDataTable(lstProductType);
             //convert sang select list dang value,text
-            ViewBag.ProductType = objcommom.ToSelectList(dtProductType, "Id", "Name");
+            ViewBag.ProductType = objcommom.ToSelectList(dtProductType,"Id", "Name");
         }
 
     }

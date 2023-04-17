@@ -14,7 +14,7 @@
             <div class="card-body">
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                 {
-                    @Html.AntiForgeryToken()
+                  //  @Html.AntiForgeryToken()
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email)
                         @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })

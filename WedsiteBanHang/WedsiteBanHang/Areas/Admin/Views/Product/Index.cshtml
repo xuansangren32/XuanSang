@@ -10,6 +10,34 @@
 
     <h2>Quản lí sản phẩm</h2>
 
+    <style>
+        /* Set the style for the a tag */
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #29c9d4;
+        }
+            /* set the style for the active class */
+            .pagination a.active {
+                background-color: dodgerblu;
+                color: white;
+                display: inline-block;
+                width: 40px;
+                height: 48px;
+                border: 1px solid #ffb600;
+            }
+            /* add background color when user hovers on inactive class */
+            .pagination a:hover:not(.active) {
+                background-color: #4cff00;
+                display: inline-block;
+                width: 40px;
+                height: 48px;
+                border: 1px solid #00ffff;
+            }
+    </style>
     <p>
         @Html.ActionLink("Tạo mới", "Create")
     </p>
@@ -21,82 +49,124 @@
         </p>
 
     }
-    <table class="table text-center">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ShortDes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().FullDexciption)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().PiceDiscount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Typeld)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Slug)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <table class="table table-bordered table-striped">
+        @*<table class="table text-center">*@
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Avatar)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShortDes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullDexciption)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PiceDiscount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Typeld)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Slug)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrandId)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
+            <tr>
+                <th class="text-center" style="width:20px;">Tên sản phẩm</th>
+                <th class="text-center" style="width:20px;">Hình ảnh</th>
+                <th class="text-center" style="width:20px;">
+                    Loại sản phẩm
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Chi tiết ngắn
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Mô tả đầy đủ
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Giá
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Giá giảm
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Kiểu
+                </th>
 
+                <th class="text-center" style="width:20px;">
+                    Kiểu loại
+                </th>
+                <th class="text-center" style="width:20px;">
+                    Thương hiệu
+                </th>
+                <th class="text-center" style="width:180px;">Chức năng</th>
+                @*<th class="text-center" style="width:20px;">ID</th>*@
+            </tr>
+
+        </thead>
+        <tbody>
+
+
+            @*<tr>
+                    <th>
+
+
+                        <label>T loai  @Html.DisplayNameFor(model => model.FirstOrDefault().Id)</label>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ShortDes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().FullDexciption)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().PiceDiscount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Typeld)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().Slug)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)
+                    </th>
+                    <th>Chức năng</th>
+                </tr>*@
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <img src="~/Content/images/items/@Html.DisplayFor(modelItem => item.Avatar)" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShortDes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullDexciption)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PiceDiscount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Typeld)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Slug)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandId)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-edit text-white"></i></a>
+                        <a href="@Url.Action("Details","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-eye text-white"></i></a>
+                        <a href="@Url.Action("Delete","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-trash-alt text-white"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount

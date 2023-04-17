@@ -7,13 +7,15 @@
 <div class="content-wrapper">
     <h2>Xóa Sản Phẩm</h2>
 
-    <h3>Are you sure you want to delete this?</h3>
+  
     <div>
-        <h4>Sản Phẩm</h4>
+     
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+
+                <label>Tên sản phẩm</label>
+                @*@Html.DisplayNameFor(model => model.Name)*@
             </dt>
 
             <dd>
@@ -21,7 +23,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Avatar)
+                <label>Hình ảnh</label>
+                @*@Html.DisplayNameFor(model => model.Avatar)*@
             </dt>
 
             <dd>
@@ -29,7 +32,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Category)
+                <label>Loại sản phẩm</label>
+                @*@Html.DisplayNameFor(model => model.Category)*@
             </dt>
 
             <dd>
@@ -37,7 +41,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.ShortDes)
+                <label>Mô tả ngắn</label>
+                @*@Html.DisplayNameFor(model => model.ShortDes)*@
             </dt>
 
             <dd>
@@ -45,7 +50,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.FullDexciption)
+                <label>Mô tả đầy đủ</label>
+                @*@Html.DisplayNameFor(model => model.FullDexciption)*@
             </dt>
 
             <dd>
@@ -53,7 +59,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Price)
+                <label>Giá</label>
+                @*@Html.DisplayNameFor(model => model.Price)*@
             </dt>
 
             <dd>
@@ -61,7 +68,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.PiceDiscount)
+                <label>Giá giảm</label>
+                @*@Html.DisplayNameFor(model => model.PiceDiscount)*@
             </dt>
 
             <dd>
@@ -69,7 +77,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Typeld)
+                <label>Kiểu</label>
+                @*@Html.DisplayNameFor(model => model.Typeld)*@
             </dt>
 
             <dd>
@@ -77,7 +86,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Slug)
+                <label>Kiểu loại</label>
+                @*@Html.DisplayNameFor(model => model.Slug)*@
             </dt>
 
             <dd>
@@ -85,7 +95,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.BrandId)
+                <label>Thương hiệu</label>
+                @*@Html.DisplayNameFor(model => model.BrandId)*@
             </dt>
 
             <dd>
@@ -99,8 +110,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại Trang Chủ", "Index")
             </div>
             }
         

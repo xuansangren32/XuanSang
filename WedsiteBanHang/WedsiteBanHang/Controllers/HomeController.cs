@@ -14,7 +14,7 @@ namespace WedsiteBanHang.Controllers
 {
     public class HomeController : Controller
     {
-        WedBanHangEntities objWedBanHangEntities = new WedBanHangEntities();
+        WedBanHangEntities1 objWedBanHangEntities = new WedBanHangEntities1();
         public ActionResult Index()
         {
             HomeModel objHomeModel=new HomeModel();
@@ -77,6 +77,8 @@ namespace WedsiteBanHang.Controllers
         //doi get thanh post
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
         public ActionResult Login(string email, string password)
         {
             if (ModelState.IsValid)
@@ -108,6 +110,7 @@ namespace WedsiteBanHang.Controllers
             Session.Clear();//remove session
             return RedirectToAction("Login");
         }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -119,6 +122,10 @@ namespace WedsiteBanHang.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Seach(String seach,int id=0)
+        {
             return View();
         }
     }

@@ -1,0 +1,82 @@
+﻿@model WedsiteBanHang.Context.Brand
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="content-wrapper">
+    <h2>Chi tiết thương hiệu</h2>
+
+    <div>
+        <h4>Thương hiệu</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Tên sản phẩm</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                <label>Hình ảnh</label>
+            </dt>
+
+            <dd>
+                <img width="100" height="100" src="~/Content/images/items/@Model.Avatar"
+            </dd>
+
+            <dt>
+                <label>Loại sản phẩm</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Slug)
+            </dd>
+
+            <dt>
+                <label>Hiện Trên Trang Chủ</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShowOnHomePage)
+            </dd>
+
+            <dt>
+                <label>Thứ tự hiển thị</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DisplayOrder)
+            </dd>
+
+            <dt>
+                <label>Ngày tạo</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOnUtc)
+            </dd>
+
+            <dt>
+                <label>Ngày cập nhật</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedOnUtc)
+            </dd>
+
+            <dt>
+                <label>Xóa</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Deleted)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Quay lại", "Index")
+    </p>

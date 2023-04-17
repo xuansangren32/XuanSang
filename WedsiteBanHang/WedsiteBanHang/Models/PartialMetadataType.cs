@@ -11,8 +11,8 @@ namespace WedsiteBanHang.Models
     public partial class User
     {
     }
-    [MetadataType(typeof(UserMasterData))]
-    public partial class ProductMasterData
+    [MetadataType(typeof(ProductMasterData))]
+    public partial class Products
     {
         [NotMapped]
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }

@@ -8,15 +8,17 @@
     <h2>Chi tiết sản phẩm</h2>
 
     <div>
-        <h4>Sản Phẩm</h4>
+        @*<h4>Sản Phẩm</h4>*@
         <hr />
         <dl class="dl-horizontal">
             <div class="col-md-6 text-right">
                 @*<a href="@Url.Action("Edit","Product",new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fa-solid fa-pen-to-square"></i></a>*@
 
             </div>
+           
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                <label>Tên sản phẩm</label>
+                @*@Html.DisplayNameFor(model => model.Name)*@
             </dt>
 
             <dd>
@@ -24,15 +26,17 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Avatar)
+                <label>Hình ảnh</label>
+                @*@Html.DisplayNameFor(model => model.Avatar)*@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Avatar)
+                <img width="100" height="100" src="~/Content/images/items/@Model.Avatar" />
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Category)
+                <label>loại sản phẩm</label>
+                @*@Html.DisplayNameFor(model => model.Category)*@
             </dt>
 
             <dd>
@@ -40,7 +44,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.ShortDes)
+                <label>Mô tả ngắn</label>
+                @*@Html.DisplayNameFor(model => model.ShortDes)*@
             </dt>
 
             <dd>
@@ -48,7 +53,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.FullDexciption)
+                <label>Mô tả đầy đủ</label>
+                @*@Html.DisplayNameFor(model => model.FullDexciption)*@
             </dt>
 
             <dd>
@@ -56,7 +62,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Price)
+                <label>Giá</label>
+                @*@Html.DisplayNameFor(model => model.Price)*@
             </dt>
 
             <dd>
@@ -64,7 +71,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.PiceDiscount)
+                <label>Giảm giá</label>
+                @*@Html.DisplayNameFor(model => model.PiceDiscount)*@
             </dt>
 
             <dd>
@@ -72,7 +80,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Typeld)
+                <label>Kiểu</label>
+                @*@Html.DisplayNameFor(model => model.Typeld)*@
             </dt>
 
             <dd>
@@ -80,7 +89,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Slug)
+                <label>Kiểu loại</label>
+                @*@Html.DisplayNameFor(model => model.Slug)*@
             </dt>
 
             <dd>
@@ -88,7 +98,8 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.BrandId)
+                <label>Thương hiệu</label>
+                @*@Html.DisplayNameFor(model => model.BrandId)*@
             </dt>
 
             <dd>
@@ -99,8 +110,8 @@
     </div>
     <p>
 
-        }
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Quay lại Trang Chủ", "Index")
     </p>
-</div>
+</div>}

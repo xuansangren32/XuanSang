@@ -140,6 +140,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategorysController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\sangController.cs" />
     <Compile Include="Commom.cs" />
@@ -167,6 +169,9 @@
     <Compile Include="Context\Order.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\OrderDetail.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Product.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -174,24 +179,28 @@
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BlankStarterController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DetailProductController.cs" />
+    <Compile Include="Controllers\GirlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ListingGridController.cs" />
     <Compile Include="Controllers\ListingLargeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SangController.cs" />
-    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Controllers\UserRegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PartialMetadataType.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
+    <Compile Include="Models\ProductSearch.cs" />
     <Compile Include="Models\UserMasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2103,15 +2112,51 @@
     <Content Include="Content\images\items\7.jpg" />
     <Content Include="Content\images\items\8.jpg" />
     <Content Include="Content\images\items\9.jpg" />
+    <Content Include="Content\images\items\apple.jpg" />
     <Content Include="Content\images\items\dog.png" />
+    <Content Include="Content\images\items\dong1.jpg" />
+    <Content Include="Content\images\items\dong2.jpg" />
+    <Content Include="Content\images\items\dong3.jpg" />
+    <Content Include="Content\images\items\dongho.jpg" />
+    <Content Include="Content\images\items\dongho1.jpg" />
+    <Content Include="Content\images\items\dongho3.jpg" />
+    <Content Include="Content\images\items\dongho4.jpg" />
+    <Content Include="Content\images\items\donghothoitrang.jpg" />
+    <Content Include="Content\images\items\donghothoitrang1.jpg" />
+    <Content Include="Content\images\items\donghothoitrang2.png" />
+    <Content Include="Content\images\items\donghothoitrang3.jpg" />
+    <Content Include="Content\images\items\donghothoitrang4.jpg" />
+    <Content Include="Content\images\items\ip1.jpg" />
+    <Content Include="Content\images\items\ip2.jpg" />
+    <Content Include="Content\images\items\iphone11.jpg" />
+    <Content Include="Content\images\items\iphone2.png" />
+    <Content Include="Content\images\items\laptop1.jpg" />
+    <Content Include="Content\images\items\laptop3.png" />
+    <Content Include="Content\images\items\laptop4.jpg" />
+    <Content Include="Content\images\items\maytinhban.jpg" />
+    <Content Include="Content\images\items\maytinhban1.jpg" />
+    <Content Include="Content\images\items\phone.jpg" />
+    <Content Include="Content\images\items\laptop.jpg" />
+    <Content Include="Content\images\items\laptop2.jpg" />
+    <Content Include="Content\images\items\phukien1.jpg" />
+    <Content Include="Content\images\items\phukien2.jpg" />
+    <Content Include="Content\images\items\phukien3.jpg" />
+    <Content Include="Content\images\items\samsung03.jpg" />
+    <Content Include="Content\images\items\samsung1.jpg" />
+    <Content Include="Content\images\items\samsung2.jpg" />
+    <Content Include="Content\images\items\samsung4.jpg" />
+    <Content Include="Content\images\items\xiomi1.jpg" />
+    <Content Include="Content\images\items\xiomi2.jpg" />
+    <Content Include="Content\images\items\xiomi3.jpg" />
+    <Content Include="Content\images\items\xiomi4.jpg" />
     <Content Include="Content\images\items\z3986145773597_3c38c33800c01871c8db345cb717cb54.jpg" />
     <Content Include="Content\images\items\z3990333399704_d4c51c851e57366590c6dcc62954418c.jpg" />
     <Content Include="Content\images\items\z3990333404157_52ec529ed7decb0fa86602251ae25d51.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Context\dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
       <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Context\dbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -2210,13 +2255,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\sang\Index.cshtml" />
-    <EntityDeploy Include="Context\dbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Context\dbModel.edmx.diagram">
-      <DependentUpon>dbModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
@@ -2237,6 +2275,24 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Scripts\ckeditor\SECURITY.md" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Content\images\items\samsung3.webp" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorys\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorys\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorys\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorys\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categorys\Edit.cshtml" />
+    <EntityDeploy Include="Context\dbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Context\dbModel.edmx.diagram">
+      <DependentUpon>dbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -2641,7 +2697,6 @@
     <Content Include="Views\UserRegister\UserRegister.cshtml" />
     <Content Include="Views\ListingGrid\ListingGrid.cshtml" />
     <Content Include="Views\ListingLarge\ListingLarge.cshtml" />
-    <Content Include="Views\ShoppingCart\ShoppingCart.cshtml" />
     <Content Include="Views\Components\Components.cshtml" />
     <Content Include="Views\BlankStarter\BlankStarter.cshtml" />
     <Content Include="Views\DetailProduct\DetailProduct.cshtml" />
@@ -2649,6 +2704,12 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Category\ProductCategory.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\Seach.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Girl\Index.cshtml" />
+    <Content Include="Views\Girl\Listing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

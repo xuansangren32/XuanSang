@@ -183,13 +183,13 @@
                         <h6>DANH MỤC</h6>
                         <nav class="nav-home-aside">
                             <ul class="menu-category">
-                                @foreach(var item in Model.ListCategory.Where(n=>n.ShowOnHomePage ==true ))
-            { 
-                <li><a href="#">@item.Name</a></li>
+                                @foreach (var item in Model.ListCategory)
+                                {
+                                    <li>@Html.ActionLink(item.Name, "ProductCategory", "Category", new { Id = item.Id }, null)</li>
 
-            }
-                                    
-                          
+                                }
+
+
                             </ul>
                         </nav>
                     </aside> <!-- col.// -->
@@ -228,19 +228,19 @@
                     <div class="col-md d-none d-lg-block flex-grow-1">
                         <aside class="special-home-right">
                             <h6 class="bg-blue text-center text-white mb-0 p-2">@Html.ActionLink("Danh mục phổ biến", "Category", "Category")</h6>
-                            @foreach (var item in Model.ListCategory.Take(3
+                            @foreach (var item in Model.ListCategory.Where(n => n.ShowOnHomePage == true).Take(3
                                 ))
                             {
                                 <div class="card-banner border-bottom">
                                     <div class="py-3" style="width:80%">
-                                        <h6 class="card-title">Quần áo nam</h6>
+                                        <h6 class="card-title">Điện Thoại</h6>
                                         <a href="#" class="btn btn-secondary btn-sm"> @item.Name </a>
                                     </div>
-                                    <img src="~/Content/images/items/1.jpg" height="80" class="img-bg">
+                                    <img src="~/Content/images/items/@item.Avatar" height="80" class="img-bg">
                                 </div>
 
 
-                             
+
 
                             }
 
@@ -269,112 +269,27 @@
                 </div>
             </div> <!-- col.// -->
             <div class="row no-gutters items-wrap">
-                @foreach (var item in Model.ListProduct.Where(n=>n.Typeld==1).Take(5))
+                @foreach (var item in Model.ListProduct.Where(n => n.Typeld == 2).Take(5))
                 {
                     <div class="col-md col-6">
                         <figure class="card-product-grid card-sm">
-                            <a href="#" class="img-wrap">
-                                <img src="~/Content/images/items/10.jpg">
+                            <a href="@Url.Action("DetailProduct","DetailProduct", new { Id = item.Id })" class="img-wrap">
+                                <img src="~/Content/images/items/@item.Avatar">
                             </a>
                             <div class="text-wrap p-3">
-                                <a href="#" class="title">@item.Name </a>
+                                @*<a href="#" class="title">@item.Name </a>*@
+                                @Html.ActionLink(item.Name, "DetailProduct", "DetailProduct", new { Id = item.Id }, null)
                                 <span class="badge badge-danger"> -20% </span>
                             </div>
                         </figure>
                     </div> <!-- col.// -->
                 }
 
-                <div class="col-md col-6">
-                    <figure class="card-product-grid card-sm">
-                        <a href="#" class="img-wrap">
-                            <img src="~/Content/images/items/4.jpg">
-                        </a>
-                        <div class="text-wrap p-3">
-                            <a href="#">@Html.ActionLink("Một số loại", "DetailProduct", "DetailProduct")</a>
-                            <span class="badge badge-danger"> -5% </span>
-                        </div>
-                    </figure>
-                </div> <!-- col.// -->
-                <div class="col-md col-6">
-                    <figure class="card-product-grid card-sm">
-                        <a href="#" class="img-wrap">
-                            <img src="~/Content/images/items/5.jpg">
-                        </a>
-                        <div class="text-wrap p-3">
-                            <a href="#">@Html.ActionLink("Thể loại khác", "DetailProduct", "DetailProduct")</a>
-                            <span class="badge badge-danger"> -20% </span>
-                        </div>
-                    </figure>
-                </div> <!-- col.// -->
-                <div class="col-md col-6">
-                    <figure class="card-product-grid card-sm">
-                        <a href="#" class="img-wrap">
-                            <img src="~/Content/images/items/6.jpg">
-                        </a>
-                        <div class="text-wrap p-3">
-                            <a href="#">@Html.ActionLink("Trang phục gia đình", "DetailProduct", "DetailProduct")</a>
-                            <span class="badge badge-danger"> -15% </span>
-                        </div>
-                    </figure>
-                </div> <!-- col.// -->
-                <div class="col-md col-6">
-                    <figure class="card-product-grid card-sm">
-                        <a href="#" class="img-wrap">
-                            <img src="~/Content/images/items/7.jpg">
-                        </a>
-                        <div class="text-wrap p-3">
-                            <a href="#">@Html.ActionLink("Đồng hồ thông minh", "DetailProduct", "DetailProduct")</a>
-                            <span class="badge badge-danger"> -10% </span>
-                        </div>
-                    </figure>
-                </div> <!-- col.// -->
             </div>
-        </div>
 
     </section>
     <!-- =============== SECTION DEAL // END =============== -->
     <!-- =============== SECTION 1 =============== -->
-    <section class="padding-bottom">
-        <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">SamSung</h4>
-        </header>
-
-        <div class="card card-home-category">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-
-                    <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Xu hướng quần áo tốt nhất chỉ dành cho mùa hè</h5>
-                        <p>Apisisi sẽ được tuân theo, nhưng nó sẽ xảy ra cùng lúc với một số công việc vĩ đại và nỗi đau. </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
-                        <img src="~/Content/images/items/2.jpg" class="img-bg">
-                    </div>
-
-                </div> <!-- col.// -->
-                <div class="col-md-9">
-                    <ul class="row no-gutters bordered-cols">
-                        @foreach (var item in Model.ListProduct.Where(n=>n.BrandId==1))
-                        {
-                            <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
-                                    <div class="card-body">
-                                        <h6 class="title"> <a href="#">@Html.ActionLink("Quần áo phụ nữ được làm tốt với bộ sưu tập theo xu hướng ", "DetailProduct", "DetailProduct")</a> </h6>
-                                        <img class="img-sm float-right" src="~/Content/images/items/1.jpg">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                        }
-
-                      
-                    </ul>
-                </div> <!-- col.// -->
-            </div> <!-- row.// -->
-        </div> <!-- card.// -->
-    </section>
-    <!-- =============== SECTION 1 END =============== -->
-    <!-- =============== SECTION 2 =============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">Apple</h4>
@@ -385,10 +300,51 @@
                 <div class="col-md-3">
 
                     <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">Xu hướng quần áo tốt nhất chỉ dành cho mùa hè</h5>
+                        <p>Apisisi sẽ được tuân theo, nhưng nó sẽ xảy ra cùng lúc với một số công việc vĩ đại và nỗi đau. </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                        <img src="~/Content/images/items/iphone11.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 1))
+                        {
+                            <li class="col-6 col-lg-3 col-md-4">
+                                <a href="#" class="item">
+                                    <div class="card-body">
+                                        <h6 class="title"> <a href="@Url.Action("DetailProduct","DetailProduct", new { Id = item.Id })">Chi tiết Sản phẩm</a> </h6>
+                                        <img  class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
+                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        }
+
+
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+    <!-- =============== SECTION 1 END =============== -->
+    <!-- =============== SECTION 2 =============== -->
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">Samsung</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
                         <h5 class="title">   <a href="#">@Html.ActionLink("Các mặt hàng máy móc cho nhà sản xuất", "DetailProduct", "DetailProduct")</a></h5>
                         <p>Apisisi sẽ được tuân theo, nhưng nó sẽ xảy ra cùng lúc với một số công việc vĩ đại và nỗi đau. </p>
                         <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
-                        <img src="~/Content/images/items/14.jpg" class="img-bg">
+                        <img src="~/Content/images/items/samsung03.jpg" class="img-bg">
                     </div>
 
                 </div> <!-- col.// -->
@@ -400,8 +356,8 @@
                             <li class="col-6 col-lg-3 col-md-4">
                                 <a href="#" class="item">
                                     <div class="card-body">
-                                        <h6 class="title">   <a href="#">@Html.ActionLink("Bộ sưu tập đồ điện tử được thực hiện tốt", "DetailProduct", "DetailProduct")</a>  </h6>
-                                        <img class="img-sm float-right" src="~/Content/images/items/7.jpg">
+                                        <h6 class="title">   <a href="@Url.Action("DetailProduct","DetailProduct", new { Id = item.Id })">Chi tiết Sản Phẩm</a>  </h6>
+                                        <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
                                         <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
                                     </div>
                                 </a>
@@ -415,6 +371,47 @@
         </div> <!-- card.// -->
     </section>
     <!-- =============== SECTION 2 END =============== -->
+    <!-- =============== SECTION 3 =============== -->
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">Xiaomi</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">   <a href="#">@Html.ActionLink("Các mặt hàng máy móc cho nhà sản xuất", "DetailProduct", "DetailProduct")</a></h5>
+                        @*<p>Apisisi sẽ được tuân theo, nhưng nó sẽ xảy ra cùng lúc với một số công việc vĩ đại và nỗi đau. </p>*@
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                        <img src="~/Content/images/items/xiomi1.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 3))
+                        {
+
+                            <li class="col-6 col-lg-3 col-md-4">
+                                <a href="#" class="item">
+                                    <div class="card-body">
+                                        <h6 class="title">   <a href="@Url.Action("DetailProduct","DetailProduct", new { Id = item.Id })">Chi tiết sản phẩm</a>  </h6>
+                                        <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
+                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
+                                    </div>
+                                </a>
+                            </li>
+
+                        }
+
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+    <!-- =============== SECTION 3 END =============== -->
     <!-- =============== SECTION REQUEST =============== -->
 
     <section class="padding-bottom">
@@ -491,7 +488,7 @@
             {
                 <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                     <div href="#" class="card card-sm card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
+                        <a href="@Url.Action("DetailProduct","DetailProduct", new { Id = item.Id })" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
                         <figcaption class="info-wrap">
                             <a href="#" class="title">
                                 <a href="#">@item.Name</a>
@@ -506,13 +503,13 @@
 
 
 
-</section>
+    </section>
     <!-- =============== SECTION ITEMS .//END =============== -->
     <!-- =============== SECTION SERVICES =============== -->
     <section class="padding-bottom">
 
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Trade services</h4>
+            <h4 class="title-section text-uppercase">DỊCH VỤ THƯƠNG MẠI</h4>
         </header>
 
         <div class="row">

@@ -1,0 +1,288 @@
+﻿@model List<WedsiteBanHang.Context.Product>
+
+@{
+    ViewBag.Title = "ProductCategory";
+}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <ol class="breadcrumb float-left">
+                    <li class="breadcrumb-item"><a href="~/Home/Index">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Tên danh mục</a></li>
+                    <li class="breadcrumb-item active">Mục chi tiết</li>
+                </ol>
+            </div> 
+        </div>  
+
+
+        <div class="row">
+            <aside class="col-md-2">
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Product type </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_1" style="">
+                        <div class="inner">
+                            <ul class="list-menu">
+                                <li><a href="~/Category/ProductCategory/1">Iphone  </a></li>
+
+                                <li><a href="~/Category/ProductCategory/2">Máy tính  </a></li>
+                                <li><a href="~/Category/ProductCategory/3">Máy tính bàn</a></li>
+                                <li><a href="~/Category/ProductCategory/4">Phụ kiện</a></li>
+                                <li><a href="~/Category/ProductCategory/5">Đồng hồ  </a></li>
+                                <li><a href="~/Category/ProductCategory/6">Đồng hồ thời trang  </a></li>
+                            </ul>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group  .// -->
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Thương hiệu </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_2">
+                        <div class="inner">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    Iphone
+                                    <b class="badge badge-pill badge-light float-right">120</b>
+                                </div>
+                            </label>
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    Samsung
+                                    <b class="badge badge-pill badge-light float-right">15</b>
+                                </div>
+                            </label>
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                   Xiaomi
+                                    <b class="badge badge-pill badge-light float-right">35</b>
+                                </div>
+                            </label>
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    laptop
+                                    <b class="badge badge-pill badge-light float-right">89</b>
+                                </div>
+                            </label>
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    Đồng Hồ
+                                    <b class="badge badge-pill badge-light float-right">30</b>
+                                </div>
+                            </label>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Phạm vi giá </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_3">
+                        <div class="inner">
+                            <input type="range" class="custom-range" min="0" max="100" name="">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Tối thiểu</label>
+                                    <input class="form-control" placeholder="$0" type="number">
+                                </div>
+                                <div class="form-group text-right col-md-6">
+                                    <label>Tối đa</label>
+                                    <input class="form-control" placeholder="$1,0000" type="number">
+                                </div>
+                            </div> <!-- form-row.// -->
+                            <button class="btn btn-block btn-primary">Áp dụng</button>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Kích thước </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_4">
+                        <div class="inner">
+                            <label class="checkbox-btn">
+                                <input type="checkbox">
+                                <span class="btn btn-light"> XS </span>
+                            </label>
+
+                            <label class="checkbox-btn">
+                                <input type="checkbox">
+                                <span class="btn btn-light"> SM </span>
+                            </label>
+
+                            <label class="checkbox-btn">
+                                <input type="checkbox">
+                                <span class="btn btn-light"> LG </span>
+                            </label>
+
+                            <label class="checkbox-btn">
+                                <input type="checkbox">
+                                <span class="btn btn-light"> XXL </span>
+                            </label>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Trạng thái </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_5">
+                        <div class="inner">
+                            <label class="custom-control custom-radio">
+                                <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
+                                <div class="custom-control-label">Bất cứ điều kiện nào</div>
+                            </label>
+
+                            <label class="custom-control custom-radio">
+                                <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                <div class="custom-control-label">Thương hiệu mới </div>
+                            </label>
+
+                            <label class="custom-control custom-radio">
+                                <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                <div class="custom-control-label">Đồ đã sử dụng qua</div>
+                            </label>
+
+                            <label class="custom-control custom-radio">
+                                <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                <div class="custom-control-label">Rất cx</div>
+                            </label>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+            </aside> <!-- col.// -->
+            <main class="col-md-10">
+
+
+                <header class="mb-3">
+                    <div class="form-inline">
+                        <strong class="mr-md-auto">32 Các mặt hàng được tìm thấy </strong>
+                        <select class="mr-2 form-control">
+                            <option>Mặt hàng mới nhất</option>
+                            <option>Xu hướng</option>
+                            <option>Phổ biến nhất</option>
+                            <option>Rẻ nhất</option>
+                        </select>
+                        <div class="btn-group">
+                            <a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                            <a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view">
+                                <i class="fa fa-th"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header><!-- sect-heading -->
+                @foreach (var item in Model)
+                {
+                    <article class="card card-product-list">
+                        <div class="row no-gutters">
+                            <aside class="col-md-3">
+                                <a href="#" class="img-wrap">
+                                    <span class="badge badge-danger"> Mới </span>
+                                    <img src="~/Content/images/items/@item.Avatar">
+                                </a>
+                            </aside> <!-- col.// -->
+                            <div class="col-md-6">
+                                <div class="info-main">
+                                    <a href="#" class="h5 title">@item.Name</a>
+                                    <div class="rating-wrap mb-2">
+                                        <ul class="rating-stars">
+                                            <li style="width:100%" class="stars-active">
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                                        <div class="label-rating">9/10</div>
+                                    </div> <!-- rating-wrap.// -->
+
+                                    <p class="mb-3">
+                                        <span class="tag"> <i class="fa fa-check"></i> Đã xác minh</span>
+                                        <span class="tag"> 5 Năm </span>
+                                        <span class="tag"> 80 Đánh giá </span>
+                                        <span class="tag"> Russia </span>
+                                    </p>
+                                    @item.ShortDes
+                                <p>
+                                    Mô tả sản phẩm:Máy tính xách tay chơi game Laptop Gigabyte AORUS 5 SE4-73VN313SH được thiết kế dành cho những game thủ sành sỏi. Với bộ vi xử lý Intel Core i7 thế hệ thứ 12 mới nhất, hiệu năng ấn tượng cho phép game thủ thể hiện tất cả các kỹ năng của mình. Được trang bị màn hình tốc độ làm mới cao 240Hz, có thể đánh bại tất cả các đối thủ một cách chính xác.
+                                </p>
+
+                                </div> <!-- info-main.// -->
+                            </div> <!-- col.// -->
+                            <aside class="col-sm-3">
+                                <div class="info-aside">
+                                    <div class="price-wrap">
+                                        <span class="h5 price">@item.Price</span>
+                                        <small class="text-muted">Mỗi mục</small>
+                                    </div> <!-- price-wrap.// -->
+                                    <small class="text-warning">Trả tiền vận chuyển</small>
+
+                                    <p class="text-muted mt-3">Công ty Iphone</p>
+                                    <p class="mt-3">
+                                        <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Liên hệ với nhà cung cấp </a>
+                                        <a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Lưu </a>
+                                    </p>
+
+                                    <label class="custom-control mt-3 custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input">
+                                        <div class="custom-control-label">
+                                            Thêm vào để so sánh
+                                        </div>
+                                    </label>
+
+                                </div> <!-- info-aside.// -->
+                            </aside> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </article> <!-- card-product .// -->
+
+
+                }
+
+
+
+                <nav class="mb-4" aria-label="Page navigation sample">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+                    </ul>
+                </nav>
+
+
+                <div class="box text-center">
+                    <p>Bạn đã tìm thấy những gì bạn đang tìm kiếm?</p>
+                    <a href="" class="btn btn-light">Có</a>
+                    <a href="" class="btn btn-light">Không</a>
+                </div>
+
+
+            </main> <!-- col.// -->
+
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

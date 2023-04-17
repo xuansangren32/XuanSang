@@ -1,7 +1,39 @@
-﻿
+﻿@model WedsiteBanHang.Context.Product
+
 @{
     ViewBag.Title = "DetailProduct";
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.Id;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
 
 <h2>Chi tiết Sản phẩm</h2>
 
@@ -26,7 +58,7 @@
                 <div class="card">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href=""><img src="~/Content/images/items/15.jpg"></a></div>
+                            <div> <a href=""><img src="~/Content/images/items/@Model.Avatar"></a></div>
                         </div> <!-- slider-product.// -->
                         <div class="thumbs-wrap">
                             <a href="#" class="item-thumb"> <img src="~/Content/images/items/15.jpg"></a>
@@ -40,7 +72,7 @@
             <main class="col-md-6">
                 <article class="product-info-aside">
 
-                    <h2 class="title mt-3">Giày unisex thiết kế mới bán chạy </h2>
+                    <h2 class="title mt-3"> @Model.Name </h2>
 
                     <div class="rating-wrap my-3">
                         <ul class="rating-stars">
@@ -60,17 +92,12 @@
                     </div> <!-- rating-wrap.// -->
 
                     <div class="mb-3">
-                        <var class="price h4">USD 465,00</var>
+                        <var class="price h4">@Model.Price</var>
                         <span class="text-muted">USD 562.65 incl. VAT</span>
                     </div> <!-- price-detail-wrap .// -->
 
                     <p>
-                        Giày thể thao nhỏ gọn để chạy, sẽ được theo sau bởi adipicisic elitor, nhưng tôi làm như vậy
-                        trong thời gian chúng xảy ra như với lao động và đau đớn lớn. Trong những năm qua, tôi sẽ đến,
-                        không ai nên thực hành bất kỳ loại công việc nào ngoại trừ để đạt được một số lợi ích từ nó
-                        kết quả Đừng để nỗi đau qua đi. Trong những năm qua, tôi sẽ đến,
-                        không ai nên thực hành bất kỳ loại công việc nào ngoại trừ để đạt được một số lợi ích từ nó
-                        kết quả
+                        @Model.ShortDes
                     </p>
 
 
@@ -94,21 +121,13 @@
                     <div class="form-row  mt-4">
                         <div class="form-group col-md flex-grow-0">
                             <div class="input-group mb-3 input-spinner">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                                </div>
-                                <input type="text" class="form-control" value="1">
-                                <div class="input-group-append">
-                                    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
-                                </div>
+                                <input type="text" id="ipQuantity" class="form-control" value="1">
                             </div>
                         </div> <!-- col.// -->
                         <div class="form-group col-md">
-                            <a href="" class="btn  btn-primary">
-                                <i class="fas fa-shopping-cart"></i><span class="text">@Html.ActionLink("CartAdd to cart", "ShoppingCart", "ShoppingCart") </span>
-                            </a>
-                            <a href="" class="btn btn-light">
-                                <i class="fas fa-envelope"></i> <span class="text">Liên hệ với nhà cung cấp</span>
+                            <a href="#" id="addtocart" class="btn  btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="text" h>Thêm vào giỏ hàng</span>
                             </a>
                         </div> <!-- col.// -->
                     </div> <!-- row.// -->
@@ -127,41 +146,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h5 class="title-description">Sự miêu tả</h5>
-                <p>
-                    Lò nướng bằng đá nham thạch, phù hợp với khí đốt tự nhiên, với lưới nấu bằng gang, đánh lửa áp điện, đầu đốt bằng thép không gỉ, bình chứa nước và cặp nhiệt điện. Điều chỉnh nhiệt cho mỗi vùng. Đi kèm hoàn chỉnh với đá nham thạch. chân điều chỉnh. Lorem ipsum dolor sit amet, consectetur adipisizing elit, sed do eiusmod
-                    sự cố tạm thời xảy ra với người lao động và dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo
-                    hậu quả.
-                </p>
-                <ul class="list-check">
-                    <li>Vật liệu: thép không gỉ</li>
-                    <li>Cân nặng: 82kg</li>
-                    <li>Khay nhỏ giọt tích hợp</li>
-                    <li>Đế mở cho xoong nồi</li>
-                    <li>Theo yêu cầu có sẵn trong thực hiện propane</li>
-                </ul>
-
-                <h5 class="title-description">thông số kỹ thuật</h5>
-                <table class="table table-bordered">
-                    <tr> <th colspan="2">Basic specs</th> </tr>
-                    <tr> <td>Loại năng lượng    </td><td>Lava stone</td> </tr>
-                    <tr> <td>Số vùng</td><td>2</td> </tr>
-                    <tr> <td>Kết nối tự động	</td> <td> <i class="fa fa-check text-success"></i> Yes </td></tr>
-
-                    <tr> <th colspan="2">Kích thước</th> </tr>
-                    <tr> <td>Width</td><td>500mm</td> </tr>
-                    <tr> <td>Depth</td><td>400mm</td> </tr>
-                    <tr> <td>Height	</td><td>700mm</td> </tr>
-
-                    <tr> <th colspan="2">Nguyên vật liệu</th> </tr>
-                    <tr> <td>Exterior</td><td>Thép không gỉ</td> </tr>
-                    <tr> <td>Interior</td><td>Iron</td> </tr>
-
-                    <tr> <th colspan="2">Kết nối</th> </tr>
-                    <tr> <td>Loại sưởi ấm</td><td>Gas</td> </tr>
-                    <tr> <td>Kết nối tải khí</td><td>15 Kw</td> </tr>
-
-                </table>
+                @Model.FullDexciption
             </div> <!-- col.// -->
 
             <aside class="col-md-4">

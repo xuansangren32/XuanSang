@@ -16,24 +16,26 @@
             <h4>Sản phẩm</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
-                  
-                </div>
+        <div class="form-group">
+            <label>Tên sản phẩm</label>
+            @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+
             </div>
+        </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Hình ảnh</label>
+                @*@Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     <input type="file" name="ImageUpload" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Loại sản phẩm</label>
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.Category, ViewBag.ListCategory as SelectList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
@@ -41,7 +43,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ShortDes, htmlAttributes: new { @class = "control-label coSystem.InvalidOperationException: 'There is no ViewData item of type 'IEnumerable<SelectListItem>' that has the key 'Category'.'l-md-2" })
+                <label>Chi tiết</label>
+                @*@Html.LabelFor(model => model.ShortDes, htmlAttributes: new { @class = "control-label coSystem.InvalidOperationException: 'There is no ViewData item of type 'IEnumerable<SelectListItem>' that has the key 'Category'.'l-md-2" })*@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ShortDes, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ShortDes, "", new { @class = "text-danger" })
@@ -49,7 +52,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FullDexciption, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Mô tả đầy đủ</label>
+                @*@Html.LabelFor(model => model.FullDexciption, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
 
                     @Html.TextAreaFor(model => model.FullDexciption, htmlAttributes: new { htmlAttributes = new { @class = "form-control" }, @id = "FullDexciption" })
@@ -62,7 +66,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Giá</label>
+                @*@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -70,7 +75,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PiceDiscount, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Giá giảm</label>
+                @*@Html.LabelFor(model => model.PiceDiscount, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.PiceDiscount, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.PiceDiscount, "", new { @class = "text-danger" })
@@ -78,7 +84,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Typeld, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Kiểu</label>
+                @*@Html.LabelFor(model => model.Typeld, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.Typeld, ViewBag.ProductType as SelectList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Typeld, "", new { @class = "text-danger" })
@@ -86,7 +93,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Kiểu loại</label>
+                @*@Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
@@ -94,7 +102,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Thương hiệu</label>
+                @*@Html.LabelFor(model => model.BrandId, htmlAttributes: new { @class = "control-label col-md-2" })*@
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.BrandId, ViewBag.ListBrand as SelectList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
@@ -103,14 +112,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Tạo mới" class="btn btn-default" />
                 </div>
             </div>
         </div>
 
     
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Quay lại Trang Chủ", "Index")
     </div>
     }
 </div>
